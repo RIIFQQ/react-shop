@@ -14,33 +14,30 @@ function UserComponent() {
     const [id, setId] = useState("");
     const navigate = useNavigate();
     const [dataDetail, setDataDetail] = useState(null);
-
-    /*
+   
     useEffect(() => {
         getDataUser();
-    })
-    */
-
+    }, []);
+    
     const getDataUser = async() =>{
         const url_api = "http://localhost:3000";
 
         const response = await axios.get(url_api + "/users/" + params.id, { headers:headerAxios });
         if(response)
         {
-            setDataDetail(response.data.data);
+            setId(response.data.data.id)
+            setName(response.data.data.name)
+            setEmail(response.data.data.email)
+            
         }
-
-        console.log(response);
     }
-
-    //getDataUser();
 
     const prosesEdit = async (e) => {
         e.preventDefault();
         console.log("tombol edit ditekan");
         try {
             // const url_api = "https://muddy-flip-flops-bat.cyclic.app/users/register";
-            const url_api = "http://localhost:3000/users/edit/1";
+            const url_api = "http://localhost:3000/users/edit/" + id;
             const response = await axios.put(url_api, {
                 name : name,
                 email : email
@@ -78,14 +75,7 @@ function UserComponent() {
                             Data User Editxxx
                         </Typography>
                         <Box component="form" method='post' onSubmit={prosesEdit} noValidate sx={{ mt: 1 }}>
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="id"
-                                name="id"   
-                                onChange={(e) => setId(e.target.value)} 
-                            />
+
  
                             <TextField
                                 margin="normal"
@@ -93,6 +83,7 @@ function UserComponent() {
                                 fullWidth
                                 id="name"
                                 name="name"   
+                                value = {name}
                                 onChange={(e) => setName(e.target.value)} 
                                 autoFocus
                             />
@@ -104,6 +95,7 @@ function UserComponent() {
                                 id="email"
                                 name="email"
                                 autoComplete="email"
+                                value = {email}
                                 onChange={(e) => setEmail(e.target.value)} 
                             />
                             
@@ -121,18 +113,6 @@ function UserComponent() {
             </Container>
         </ThemeProvider>
     )
-
-    /*
-    return (
-        <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
-     
-                Testing aja wew
-            </Container>
-        </ThemeProvider>
-    )
-    */
-
 }
 
 export default UserComponent
