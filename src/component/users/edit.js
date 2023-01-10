@@ -15,9 +15,11 @@ function UserComponent() {
     const navigate = useNavigate();
     const [dataDetail, setDataDetail] = useState(null);
 
+    /*
     useEffect(() => {
         getDataUser();
     })
+    */
 
     const getDataUser = async() =>{
         const url_api = "http://localhost:3000";
@@ -27,8 +29,12 @@ function UserComponent() {
         {
             setDataDetail(response.data.data);
         }
+
+        console.log(response);
     }
-    
+
+    //getDataUser();
+
     const prosesEdit = async (e) => {
         e.preventDefault();
         console.log("tombol edit ditekan");
@@ -69,9 +75,18 @@ function UserComponent() {
                     >
                         
                         <Typography component="h1" variant="h5">
-                            Data User Edit
+                            Data User Editxxx
                         </Typography>
                         <Box component="form" method='post' onSubmit={prosesEdit} noValidate sx={{ mt: 1 }}>
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="id"
+                                name="id"   
+                                onChange={(e) => setId(e.target.value)} 
+                            />
+ 
                             <TextField
                                 margin="normal"
                                 required
