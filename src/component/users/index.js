@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { headerAxios } from "../../utils/headersAxios";
-import { Button, CssBaseline, TextField, Box, Grid, Typography, Container } from '@mui/material';
+import { Link, Button, CssBaseline, TextField, Box, Grid, Typography, Container } from '@mui/material';
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 const theme = createTheme();
@@ -14,43 +14,21 @@ function UserComponent() {
     const [id, setId] = useState("");
     const navigate = useNavigate();
     const [dataDetail, setDataDetail] = useState(null);
-
+   
     useEffect(() => {
         getDataUser();
-    })
-
+    }, []);
+    
     const getDataUser = async() =>{
         const url_api = "http://localhost:3000";
 
         const response = await axios.get(url_api + "/users/" + params.id, { headers:headerAxios });
         if(response)
         {
-            setDataDetail(response.data.data);
-        }
-    }
-    
-    const prosesEdit = async (e) => {
-        e.preventDefault();
-        console.log("tombol edit ditekan");
-        try {
-            // const url_api = "https://muddy-flip-flops-bat.cyclic.app/users/register";
-            const url_api = "http://localhost:3000/users/edit/1";
-            const response = await axios.put(url_api, {
-                name : name,
-                email : email
-            });
-
-            /*    
-            if(response){
-                console.log("berhasil edit");
-                navigate("/");
-            }else{
-                console.log("gagal edit");
-            }
-            */
-            console.log("Berhasil di simpan");
-        } catch (error) {
-            console.log(error.message);
+            setId(response.data.data.id)
+            setName(response.data.data.name)
+            setEmail(response.data.data.email)
+            
         }
     }
 
@@ -67,19 +45,25 @@ function UserComponent() {
                             alignItems: 'center',
                         }}
                     >
-                        
                         <Typography component="h1" variant="h5">
-                            Data User Edit
+                            My Profile
                         </Typography>
-                        <Box component="form" method='post' onSubmit={prosesEdit} noValidate sx={{ mt: 1 }}>
+                        <Box  sx={{ mt: 1 }}>
                             <TextField
                                 margin="normal"
                                 required
                                 fullWidth
                                 id="name"
                                 name="name"   
-                                onChange={(e) => setName(e.target.value)} 
+                                value = {name}
                                 autoFocus
+                                enabled="yes"
+                                sx={{
+                                    input: {
+                                      color: "white",
+                                      background: "gray"
+                                    }
+                                  }}
                             />
                             
                             <TextField
@@ -89,35 +73,39 @@ function UserComponent() {
                                 id="email"
                                 name="email"
                                 autoComplete="email"
-                                onChange={(e) => setEmail(e.target.value)} 
+                                value = {email}
+                                sx={{
+                                    input: {
+                                      color: "white",
+                                      background: "gray"
+                                    }
+                                  }}                                
                             />
-                            
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
-                            >UBAH
-                            
-                            </Button>                            
-                        </Box>
+
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link component={RouterLink} to={"/user/edit/"+id} variant="body2">
+                                        Edit Profile 
+                                    </Link>
+                                </Grid>
+                                <Grid item xs>
+                                    <Link component={RouterLink} to="/product/1" variant="body2">
+                                        Checkout
+                                    </Link>
+                                </Grid>
+
+                                <Grid item>
+                                    <Link component={RouterLink} to="/login" variant="body2">
+                                        Logout
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                        </Box>                              
                     </Box>
                     </Grid>
             </Container>
         </ThemeProvider>
     )
-
-    /*
-    return (
-        <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
-     
-                Testing aja wew
-            </Container>
-        </ThemeProvider>
-    )
-    */
-
 }
 
 export default UserComponent

@@ -26,9 +26,6 @@ function Header({ name }) {
 
 function App() {
   return (
-    // <div className="App">
-    //   <Header name="Rifqi zulkarnain"/>
-    // </div>
     <RegisterComponent />
   );
 }

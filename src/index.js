@@ -11,7 +11,7 @@ import UserComponentEdit from './component/users/edit';
 const router = createBrowserRouter([
   {
     path : "/",
-    element :<UserComponent />
+    element: <LoginComponent/>
   },
   {
     path : "/user/edit/:id",

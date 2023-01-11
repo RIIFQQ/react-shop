@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { headerAxios } from "../../utils/headersAxios";
-import { Button, CssBaseline, TextField, Box, Grid, Typography, Container } from '@mui/material';
+import { Link, Button, CssBaseline, TextField, Box, Grid, Typography, Container } from '@mui/material';
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 const theme = createTheme();
@@ -43,15 +43,7 @@ function UserComponent() {
                 email : email
             });
 
-            /*    
-            if(response){
-                console.log("berhasil edit");
-                navigate("/");
-            }else{
-                console.log("gagal edit");
-            }
-            */
-            console.log("Berhasil di simpan");
+            navigate("/user/"+id);
         } catch (error) {
             console.log(error.message);
         }
@@ -72,7 +64,7 @@ function UserComponent() {
                     >
                         
                         <Typography component="h1" variant="h5">
-                            Data User Editxxx
+                            Edit Profile User
                         </Typography>
                         <Box component="form" method='post' onSubmit={prosesEdit} noValidate sx={{ mt: 1 }}>
 
@@ -98,15 +90,36 @@ function UserComponent() {
                                 value = {email}
                                 onChange={(e) => setEmail(e.target.value)} 
                             />
-                            
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
-                            >UBAH
-                            
-                            </Button>                            
+
+                                <Grid container>
+                                    <Grid item xs>
+                                    <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    >SAVE</Button>        
+                                    </Grid> 
+                                </Grid>    
+
+                                <Grid container>
+                                    <Grid item xs>
+                                        <Link component={RouterLink} to={"/user/"+id} variant="body2">
+                                            My Profile 
+                                        </Link>
+                                    </Grid>
+
+                                    <Grid item xs>
+                                        <Link component={RouterLink} to="/product/1" variant="body2">
+                                            Checkout
+                                        </Link>
+                                    </Grid>
+
+                                    <Grid item>
+                                        <Link component={RouterLink} to="/login" variant="body2">
+                                            Logout
+                                        </Link>
+                                    </Grid>
+                                </Grid>                                                         
                         </Box>
                     </Box>
                     </Grid>

@@ -24,13 +24,16 @@ function LoginComponent() {
 
             if(response){
                 localStorage.setItem("token", response.data.token)
-                console.log("berhasil login");
-                navigate("/");
+                //console.log("berhasil login");
+                navigate("/user/"+response.data.data.id);
             }else{
-                console.log("gagal login");
+                window.alert('login failed, please try again')
+                //console.log("gagal login");
             }
         } catch (error) {
-            console.log(error);
+            //console.log(error);
+            window.alert('login failed, please try again')
+
         }
     }
 
@@ -75,10 +78,6 @@ function LoginComponent() {
                             autoComplete="current-password"
                             onChange={(e) => setPassword(e.target.value) }
                         />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
                         <Button
                             type="submit"
                             fullWidth
@@ -87,18 +86,7 @@ function LoginComponent() {
                         >
                             Sign In
                         </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link component={RouterLink} to="/register" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
+
                     </Box>
                 </Box>
             </Container>
