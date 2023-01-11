@@ -135,9 +135,9 @@ export default function DetailProductComponent() {
           <Card>
             <CardHeader title={dataDetail.name} />
             <CardContent>
-              <Typography variant="subtitle2">Rp. 150.000</Typography>
+              {/* <Typography variant="subtitle2">Rp. 150.000</Typography> */}
               <Typography variant="h5" fontWeight="bold" sx={{ mt: 2 }}>
-                {/* {currencyFormat(dataDetail.price)} */}
+                {currencyFormat(dataDetail.price)}
               </Typography>
               <Stack direction={"row"} alignItems="center" sx={{ mt: 3 }}>
                 <Button
