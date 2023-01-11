@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { headerAxios } from "../../utils/headersAxios";
-import { Link, Button, CssBaseline, TextField, Box, Grid, Typography, Container } from '@mui/material';
+import { Card, CardHeader, CardContent, Link, Button, CssBaseline, TextField, Box, Grid, Typography, Container } from '@mui/material';
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 const theme = createTheme();
@@ -62,65 +62,66 @@ function UserComponent() {
                             alignItems: 'center',
                         }}
                     >
-                        
-                        <Typography component="h1" variant="h5">
-                            Edit Profile User
-                        </Typography>
-                        <Box component="form" method='post' onSubmit={prosesEdit} noValidate sx={{ mt: 1 }}>
+                        <Card>
+                            <CardHeader  style={{textAlign: "center"}} title= 'Edit Profile User' />
+                            <CardContent>
+                                <Box component="form" method='post' onSubmit={prosesEdit} noValidate sx={{ mt: 1 }}>
 
- 
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="name"
-                                name="name"   
-                                value = {name}
-                                onChange={(e) => setName(e.target.value)} 
-                                autoFocus
-                            />
-                            
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="email"
-                                name="email"
-                                autoComplete="email"
-                                value = {email}
-                                onChange={(e) => setEmail(e.target.value)} 
-                            />
+        
+                                    <TextField
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        id="name"
+                                        name="name"   
+                                        value = {name}
+                                        onChange={(e) => setName(e.target.value)} 
+                                        autoFocus
+                                    />
+                                    
+                                    <TextField
+                                        margin="normal"
+                                        required
+                                        fullWidth
+                                        id="email"
+                                        name="email"
+                                        autoComplete="email"
+                                        value = {email}
+                                        onChange={(e) => setEmail(e.target.value)} 
+                                    />
 
-                                <Grid container>
-                                    <Grid item xs>
-                                    <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="contained"
-                                    >SAVE</Button>        
-                                    </Grid> 
-                                </Grid>    
+                                        <Grid container>
+                                            <Grid item xs>
+                                            <Button
+                                            type="submit"
+                                            fullWidth
+                                            variant="contained"
+                                            >SAVE</Button>        
+                                            </Grid> 
+                                        </Grid>    
 
-                                <Grid container>
-                                    <Grid item xs>
-                                        <Link component={RouterLink} to={"/user/"+id} variant="body2">
-                                            My Profile 
-                                        </Link>
-                                    </Grid>
+                                        <Grid container>
+                                            <Grid item xs>
+                                                <Link component={RouterLink} to={"/user/"+id} variant="body2">
+                                                    My Profile 
+                                                </Link>
+                                            </Grid>
 
-                                    <Grid item xs>
-                                        <Link component={RouterLink} to="/product/1" variant="body2">
-                                            Checkout
-                                        </Link>
-                                    </Grid>
+                                            <Grid item xs>
+                                                <Link component={RouterLink} to="/product/1" variant="body2">
+                                                    Checkout
+                                                </Link>
+                                            </Grid>
 
-                                    <Grid item>
-                                        <Link component={RouterLink} to="/login" variant="body2">
-                                            Logout
-                                        </Link>
-                                    </Grid>
-                                </Grid>                                                         
-                        </Box>
+                                            <Grid item>
+                                                <Link component={RouterLink} to="/login" variant="body2">
+                                                    Logout
+                                                </Link>
+                                            </Grid>
+                                        </Grid>                                                         
+                                </Box>
+                            </CardContent>
+                        </Card>
                     </Box>
                     </Grid>
             </Container>
