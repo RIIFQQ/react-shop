@@ -8,11 +8,15 @@ import {
   Container,
   Grid,
   Typography,
+  Link
 } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { headerAxios } from "../../utils/headersAxios";
+import { Link as RouterLink} from "react-router-dom";
+
+
 // import { dataProducts } from "../../utils/static";
 
 export default function ProductComponent() {
@@ -36,17 +40,34 @@ export default function ProductComponent() {
 
     if(response)
     {
-      // console.log("response", response);
       setDataProducts(response.data.data);
     }
   }
 
+  
   return (
     <Container sx={{ mt: 2 }}>
-      <Grid container spacing={2}>
+      <Grid container>
+      <Grid item xs>
+          <Link component={RouterLink} to={"/user/edit/"} variant="body2">
+              My Profile 
+          </Link>
+      </Grid>
+      <Grid item xs>
+          <Link component={RouterLink} to="/product" variant="body2">
+              List Product
+          </Link>
+      </Grid>
+
+      <Grid item>
+          <Link component={RouterLink} to="/login" variant="body2">
+              Logout
+          </Link>
+      </Grid>
+      <Grid container spacing={2}  sx={{ mt:3 }}>
         {dataProducts.map((data, i) => (
           <Grid key={i} item xs={3}>
-            <Card>
+            <Card> 
               <CardHeader title={data.name} />
               <CardMedia
                 component="img"
@@ -55,7 +76,7 @@ export default function ProductComponent() {
                 alt={data.name}
               />
               <CardContent>
-                <Typography variant="subtitle2">{data.name}</Typography>
+                <Typography variant="subtitle2">Price : Rp.  {data.price}</Typography>
               </CardContent>
               <CardActions>
                 {data.active ?                 
@@ -71,12 +92,13 @@ export default function ProductComponent() {
                     color="error"  
                   >Detail</Button>
                 }
-
               </CardActions>
             </Card>
-          </Grid>
+          </Grid>          
         ))}
       </Grid>
+    </Grid>        
     </Container>
+  
   );
 }

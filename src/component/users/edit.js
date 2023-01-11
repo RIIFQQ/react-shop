@@ -108,8 +108,8 @@ function UserComponent() {
                                             </Grid>
 
                                             <Grid item xs>
-                                                <Link component={RouterLink} to="/product/1" variant="body2">
-                                                    Checkout
+                                                <Link component={RouterLink} to="/product" variant="body2">
+                                                    List Product
                                                 </Link>
                                             </Grid>
 

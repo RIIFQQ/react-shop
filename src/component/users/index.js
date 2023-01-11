@@ -21,8 +21,10 @@ function UserComponent() {
     
     const getDataUser = async() =>{
         const url_api = "http://localhost:3000";
+        const user_id = localStorage.getItem("user_id")
+ 
 
-        const response = await axios.get(url_api + "/users/" + params.id, { headers:headerAxios });
+        const response = await axios.get(url_api + "/users/" + user_id, { headers:headerAxios });
         if(response)
         {
             setId(response.data.data.id)
@@ -90,8 +92,8 @@ function UserComponent() {
                                             </Link>
                                         </Grid>
                                         <Grid item xs>
-                                            <Link component={RouterLink} to="/product/1" variant="body2">
-                                                Checkout
+                                            <Link component={RouterLink} to="/product" variant="body2">
+                                                List Product
                                             </Link>
                                         </Grid>
 

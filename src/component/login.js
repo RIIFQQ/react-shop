@@ -24,6 +24,10 @@ function LoginComponent() {
 
             if(response){
                 localStorage.setItem("token", response.data.token)
+                localStorage.setItem("user_id", response.data.data.id)
+                localStorage.setItem("user_name", response.data.data.name)
+                localStorage.setItem("user_email", response.data.data.email)
+
                 //console.log("berhasil login");
                 navigate("/user/"+response.data.data.id);
             }else{

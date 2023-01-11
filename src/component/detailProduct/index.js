@@ -8,6 +8,7 @@ import {
   Grid,
   Stack,
   Typography,
+  Link
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -17,6 +18,8 @@ import axios from "axios";
 import { dataProducts } from "../../utils/static";
 import { headerAxios } from "../../utils/headersAxios";
 import { currencyFormat } from "../../utils/functions";
+import { Link as RouterLink} from "react-router-dom";
+
 
 
 export default function DetailProductComponent() {
@@ -96,10 +99,30 @@ export default function DetailProductComponent() {
   }
 // console.log(dataDetail);
   return (
+    
     <Container sx={{ mt: 2 }}>
+      <Grid container>
+        <Grid item xs>
+            <Link component={RouterLink} to={"/user/edit/"} variant="body2">
+                My Profile 
+            </Link>
+        </Grid>
+        <Grid item xs>
+            <Link component={RouterLink} to="/product" variant="body2">
+                List Product
+            </Link>
+        </Grid>
+
+        <Grid item>
+            <Link component={RouterLink} to="/login" variant="body2">
+                Logout
+            </Link>
+        </Grid>
+      </Grid>
+      
       { dataDetail &&
-        <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Grid item xs={3}>
           <img
             src={dataDetail.image}
             srcSet={dataDetail.image}
@@ -108,7 +131,7 @@ export default function DetailProductComponent() {
             style={{ width: "100%" }}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={9}>
           <Card>
             <CardHeader title={dataDetail.name} />
             <CardContent>
