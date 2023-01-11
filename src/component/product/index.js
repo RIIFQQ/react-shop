@@ -15,6 +15,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { headerAxios } from "../../utils/headersAxios";
 import { Link as RouterLink} from "react-router-dom";
+import { currencyFormat } from "../../utils/functions";
 
 
 // import { dataProducts } from "../../utils/static";
@@ -76,7 +77,7 @@ export default function ProductComponent() {
                 alt={data.name}
               />
               <CardContent>
-                <Typography variant="subtitle2">Price : Rp.  {data.price}</Typography>
+                <Typography variant="subtitle2">Price : {currencyFormat(data.price)}</Typography>
               </CardContent>
               <CardActions>
                 {data.active ?                 
