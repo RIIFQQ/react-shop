@@ -113,6 +113,12 @@ function UserComponent() {
                                                 </Link>
                                             </Grid>
 
+                                            <Grid item xs>
+                                                <Link component={RouterLink} to="/cart" variant="body2">
+                                                    My Cart
+                                                </Link>
+                                            </Grid>
+
                                             <Grid item>
                                                 <Link component={RouterLink} to="/login" variant="body2">
                                                     Logout
