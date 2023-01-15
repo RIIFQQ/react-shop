@@ -9,6 +9,7 @@ import DetailProductComponent from './component/detailProduct/index';
 import UserComponent from './component/users/index';
 import UserComponentEdit from './component/users/edit';
 import CartComponent from './component/cart/index';
+import CartSaveComponent from './component/cart/save';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
     path : "/cart",
     element: <CartComponent/>
   }  
+  ,{
+    path : "/cart/save",
+    element: <CartSaveComponent/>
+  }    
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

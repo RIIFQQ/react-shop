@@ -68,10 +68,10 @@ export default function CartComponent() {
       </Grid>
 
       <Grid item xs>
-            <Link component={RouterLink} to="/cart" variant="body2">
-                My Cart
-            </Link>
-        </Grid>
+        <Link component={RouterLink} to="/cart" variant="body2">
+            My Cart
+        </Link>
+      </Grid>
 
       <Grid item>
           <Link component={RouterLink} to="/login" variant="body2">
@@ -80,40 +80,44 @@ export default function CartComponent() {
       </Grid>
       
       <Grid container spacing={2}  sx={{ mt:3 }}>
-      <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell>Product</TableCell>
-            <TableCell align="center">Price</TableCell>
-            <TableCell align="center">Quantity</TableCell>
-            <TableCell align="center">Total</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-              <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                <TableCell align="left" width="60px" margi="10">
-                <CardMedia
-                component="img"
-                height="60"
-      
-                image={row.image}
-                alt={row.id}
-              />
-
-                </TableCell>
-                <TableCell align="left">{row.name}</TableCell>
-                <TableCell align="center">{currencyFormat(row.price)}</TableCell>
-                <TableCell align="center">{row.qty}</TableCell>
-                <TableCell align="center">{currencyFormat(row.qty * row.price)}</TableCell>
+        <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>&nbsp;</TableCell>
+              <TableCell>Product</TableCell>
+              <TableCell align="center">Price</TableCell>
+              <TableCell align="center">Quantity</TableCell>
+              <TableCell align="center">Total</TableCell>
             </TableRow>
-          ))}  
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} id="{row.id}" >
+                  <TableCell align="left" width="60px" margi="10" >
+                  <CardMedia
+                  component="img"
+                  height="60"
+        
+                  image={row.image}
+                  alt={row.id}
+                />
+
+                  </TableCell>
+                  <TableCell align="left">{row.name}</TableCell>
+                  <TableCell align="center">{currencyFormat(row.price)}</TableCell>
+                  <TableCell align="center">{row.qty}</TableCell>
+                  <TableCell align="center">{currencyFormat(row.qty * row.price)}</TableCell>
+              </TableRow>
+            ))}  
+          </TableBody>
+        </Table>
+        </TableContainer>
       </Grid>
+
+      <Button type="button" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} component={RouterLink} to={"/cart/save"}  >
+        Checkout    
+      </Button>     
     </Grid>        
     </Container>
   
