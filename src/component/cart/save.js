@@ -45,10 +45,14 @@ export default function CartComponent() {
       window.alert('Cart Success to Checkout / Save Database')
     }
 
+    //const url_api = "http://localhost:3000/cart/dave"
+    //const response = await axios.post(url_api,rows);
+
     localStorage.removeItem("cart");
     navigate("/product");
   } 
     
+
   
   
 }

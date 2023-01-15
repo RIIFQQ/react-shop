@@ -93,8 +93,8 @@ export default function CartComponent() {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} id="{row.id}" >
-                  <TableCell align="left" width="60px" margi="10" >
+                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                  <TableCell align="left" width="60px" margi="10">
                   <CardMedia
                   component="img"
                   height="60"
