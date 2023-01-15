@@ -10,7 +10,7 @@ function LoginComponent() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
+    localStorage.clear("cart");
     const prosesLogin = async (e) => {
         e.preventDefault();
         console.log("tombol login ditekan");
