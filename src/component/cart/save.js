@@ -45,7 +45,7 @@ export default function CartComponent() {
       window.alert('Cart Success to Checkout / Save Database')
     }
 
-    localStorage.clear("cart");
+    localStorage.removeItem("cart");
     navigate("/product");
   } 
     
