@@ -32,6 +32,7 @@ export default function CartComponent() {
   const [dataProducts, setDataProducts] = useState([]);
   let [rows, setRows] = useState([]);
   
+
   useEffect(() => {
     getDataProduct()
   },[])
@@ -41,18 +42,19 @@ export default function CartComponent() {
     let cart_exsiting = localStorage.getItem("cart");
     if(cart_exsiting != null && cart_exsiting.length > 0 ) {
       rows = JSON.parse(cart_exsiting);
-      console.log(rows);
-      window.alert('Cart Success to Checkout / Save Database')
+      //console.log(rows);
+      let user_id = localStorage.getItem("user_id");
+      const url_api = "http://localhost:3000/cart/save/" + user_id;
+      const response = axios.post(url_api,rows);  
+      console.log(response);
     }
-
-    //const url_api = "http://localhost:3000/cart/dave"
-    //const response = await axios.post(url_api,rows);
-
+    
+    window.alert('Cart Success to Checkout / Save Database')
     localStorage.removeItem("cart");
     navigate("/product");
   } 
     
 
-  
+  //getDataProduct();
   
 }
