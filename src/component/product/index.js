@@ -83,7 +83,7 @@ export default function ProductComponent() {
                 alt={data.name}
               />
               <CardContent>
-                <Typography variant="subtitle2">Price : {currencyFormat(data.price)} </Typography>
+                <Typography variant="subtitle2" style={{fontWeight: 'bold'}}>Price : {currencyFormat(data.price)} </Typography>
               </CardContent>
               <CardActions>
                 {data.active ?                 

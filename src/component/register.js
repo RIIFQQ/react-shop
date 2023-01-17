@@ -17,7 +17,7 @@ function RegisterComponent() {
         e.preventDefault();
         console.log("tombol register ditekan");
         try {
-            const url_api = "https://muddy-flip-flops-bat.cyclic.app/users/register";
+            const url_api = "http://localhost:3000/users/register";
             const response = await axios.post(url_api, {
                 name : name,
                 email : email,
