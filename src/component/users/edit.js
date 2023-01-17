@@ -5,6 +5,9 @@ import { headerAxios } from "../../utils/headersAxios";
 import { Card, CardHeader, CardContent, Link, Button, CssBaseline, TextField, Box, Grid, Typography, Container } from '@mui/material';
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import IconButton from '@mui/material/IconButton';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 const theme = createTheme();
 
 function UserComponent() {
@@ -52,16 +55,25 @@ function UserComponent() {
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
-                <Grid container spacing={3}>
+                <Grid container spacing={8}>
                     <CssBaseline />
                     <Box
                         sx={{
-                            marginTop: 8,
+                            marginTop: 10,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}
                     >
+                        <Grid container xs={2}>
+                            <Grid item >
+                                <Link component={RouterLink} to="/cart" variant="body2">
+                                <IconButton color="primary" aria-label="add to shopping cart">
+                                    <AddShoppingCartIcon />
+                                </IconButton>
+                                </Link>
+                            </Grid>
+                        </Grid>
                         <Card>
                             <CardHeader  style={{textAlign: "center"}} title= 'Edit Profile User' />
                             <CardContent>
@@ -103,27 +115,41 @@ function UserComponent() {
                                         <Grid container>
                                             <Grid item xs>
                                                 <Link component={RouterLink} to={"/user/"+id} variant="body2">
-                                                    My Profile 
+                                                    <Button
+                                                        type="submit"
+                                                        variant="contained"
+                                                        sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
+                                                    >
+                                                        <p>My Profile</p> 
+                                                    </Button>
                                                 </Link>
                                             </Grid>
 
                                             <Grid item xs>
                                                 <Link component={RouterLink} to="/product" variant="body2">
-                                                    List Product
+                                                    <Button
+                                                        type="submit"
+                                                        variant="contained"
+                                                        sx={{ mt: 3, mb: 2, mr:5 }}
+                                                    >
+                                                        <p>List Product</p>
+                                                    </Button>
                                                 </Link>
                                             </Grid>
-
                                             <Grid item xs>
-                                                <Link component={RouterLink} to="/cart" variant="body2">
-                                                    My Cart
+                                                <Link component={RouterLink} to="/login" variant="body2">
+                                                    <Button
+                                                        type="submit"
+                                                        fullWidth
+                                                        variant="contained"
+                                                        sx={{mt: 3,mb: 2}}
+                                                    >
+                                                    <p>Logout</p>
+                                                    </Button>
                                                 </Link>
                                             </Grid>
 
-                                            <Grid item>
-                                                <Link component={RouterLink} to="/login" variant="body2">
-                                                    Logout
-                                                </Link>
-                                            </Grid>
+                                            
                                         </Grid>                                                         
                                 </Box>
                             </CardContent>

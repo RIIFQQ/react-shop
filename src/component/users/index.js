@@ -13,7 +13,7 @@ function UserComponent() {
     const [email, setEmail] = useState("");
     const [id, setId] = useState("");
     const navigate = useNavigate();
-    const [dataDetail, setDataDetail] = useState(null);
+    // const [dataDetail, setDataDetail] = useState(null);
    
     useEffect(() => {
         getDataUser();
@@ -37,16 +37,32 @@ function UserComponent() {
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
-                <Grid container spacing={3}>
+                <Grid container spacing={8}>
                     <CssBaseline />
                     <Box
                         sx={{
-                            marginTop: 8,
+                            marginTop: 10,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}
                     >
+                        
+                        <Grid container xs={2}>
+                        <Grid item >
+                                <Link component={RouterLink} to="/login" variant="body2">
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        variant="contained"
+                                        sx={{ mb: 2, ml: 10}}
+                                    >
+                                    <p>Logout</p>
+                                    </Button>
+                                </Link>
+                            </Grid>
+                        </Grid>
+                        
                         <Card>
                             <CardHeader  style={{textAlign: "center"}} title=  'My Profile' />
                             
@@ -85,29 +101,31 @@ function UserComponent() {
                                         }}                                
                                     />
 
-                                    <Grid container>
+                                    <Grid container >
                                         <Grid item xs>
                                             <Link component={RouterLink} to={"/user/edit/"+id} variant="body2">
-                                                Edit Profile 
+                                                <Button
+                                                    type="submit"
+                                                    variant="contained"
+                                                    sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
+                                                >
+                                                    <p>Edit Profile</p> 
+                                                </Button>
+
                                             </Link>
                                         </Grid>
                                         <Grid item xs>
                                             <Link component={RouterLink} to="/product" variant="body2">
-                                                List Product
+                                                <Button
+                                                    type="submit"
+                                                    variant="contained"
+                                                    sx={{ mt: 3, mb: 2, mr:5 }}
+                                                >
+                                                <p>List Product</p>
+                                                </Button>
                                             </Link>
                                         </Grid>
-
-                                        <Grid item xs>
-                                            <Link component={RouterLink} to="/cart" variant="body2">
-                                                My Cart
-                                            </Link>
-                                        </Grid>
-
-                                        <Grid item>
-                                            <Link component={RouterLink} to="/login" variant="body2">
-                                                Logout
-                                            </Link>
-                                        </Grid>
+                                        
                                     </Grid>
                                 </Box> 
                             </CardContent>
