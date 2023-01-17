@@ -11,6 +11,7 @@ import {
   Link
 } from "@mui/material";
 import axios from "axios";
+import { styled } from '@mui/material/styles';
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { headerAxios } from "../../utils/headersAxios";
@@ -18,8 +19,9 @@ import { Link as RouterLink} from "react-router-dom";
 import { currencyFormat } from "../../utils/functions";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+// import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
@@ -44,13 +46,17 @@ export default function CartComponent() {
       setRows(rows)
       ///console.log(rows);
     }
-    
-    
-
- 
-    
   }
 
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
   
   return (
 
@@ -58,37 +64,48 @@ export default function CartComponent() {
       <Grid container>
       <Grid item xs>
           <Link component={RouterLink} to={"/user/edit/"} variant="body2">
+            <Button
+                type="submit"
+                variant="contained"
+                sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
+            >
               My Profile 
+            </Button>
           </Link>
       </Grid>
       <Grid item xs>
           <Link component={RouterLink} to="/product" variant="body2">
+            <Button
+                type="submit"
+                variant="contained"
+                sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
+            >
               List Product
+            </Button>
           </Link>
       </Grid>
 
       <Grid item xs>
         <Link component={RouterLink} to="/cart" variant="body2">
+          <Button
+              type="submit"
+              variant="contained"
+              sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
+          >
             My Cart
+          </Button>
         </Link>
       </Grid>
-
-      <Grid item>
-          <Link component={RouterLink} to="/login" variant="body2">
-              Logout
-          </Link>
-      </Grid>
-      
       <Grid container spacing={2}  sx={{ mt:3 }}>
         <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>&nbsp;</TableCell>
-              <TableCell>Product</TableCell>
-              <TableCell align="center">Price</TableCell>
-              <TableCell align="center">Quantity</TableCell>
-              <TableCell align="center">Total</TableCell>
+              <StyledTableCell>&nbsp;</StyledTableCell>
+              <StyledTableCell>Product</StyledTableCell>
+              <StyledTableCell align="center">Price</StyledTableCell>
+              <StyledTableCell align="center">Quantity</StyledTableCell>
+              <StyledTableCell align="center">Total</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
