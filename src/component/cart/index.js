@@ -84,18 +84,6 @@ export default function CartComponent() {
             </Button>
           </Link>
       </Grid>
-
-      <Grid item xs>
-        <Link component={RouterLink} to="/cart" variant="body2">
-          <Button
-              type="submit"
-              variant="contained"
-              sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
-          >
-            My Cart
-          </Button>
-        </Link>
-      </Grid>
       <Grid container spacing={2}  sx={{ mt:3 }}>
         <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

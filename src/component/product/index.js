@@ -48,40 +48,28 @@ export default function ProductComponent() {
   
   return (
     <Container sx={{ mt: 2 }}>
-      <Grid container>
-      <Grid item xs>
-          <Link component={RouterLink} to={"/user/edit/"} variant="body2">
-            <Button
-                type="submit"
-                variant="contained"
-                sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
-            >
-              My Profile 
-            </Button>
-          </Link>
-      </Grid>
-      <Grid item xs>
-          <Link component={RouterLink} to="/product" variant="body2">
-            <Button
-                type="submit"
-                variant="contained"
-                sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
-            >
-              List Product
-            </Button>
-          </Link>
-      </Grid>
-
-      <Grid item xs>
-            <Link component={RouterLink} to="/cart" variant="body2">
+      <Grid container spacing={2}  sx={{ mt:3 }}>
+        <Grid item xs>
+            <Link component={RouterLink} to={"/user/edit/"} variant="body2">
               <Button
                   type="submit"
                   variant="contained"
                   sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
               >
-                My Cart
+                My Profile 
               </Button>
             </Link>
+        </Grid>
+        <Grid item xs>
+              <Link component={RouterLink} to="/cart" variant="body2">
+                <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
+                >
+                  My Cart
+                </Button>
+              </Link>
         </Grid>
       <Grid container spacing={2}  sx={{ mt:3 }}>
         {dataProducts.map((data, i) => (
