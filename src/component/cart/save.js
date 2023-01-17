@@ -49,7 +49,7 @@ export default function CartComponent() {
       console.log(response);
     }
     
-    window.alert('Cart Success to Checkout / Save Database')
+    window.alert('Cart Success to Checkout / Save Checkout')
     localStorage.removeItem("cart");
     navigate("/product");
   } 
