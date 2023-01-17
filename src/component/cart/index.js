@@ -62,68 +62,68 @@ export default function CartComponent() {
 
     <Container sx={{ mt: 2 }}>
       <Grid container>
-      <Grid item xs>
-          <Link component={RouterLink} to={"/user/edit/"} variant="body2">
-            <Button
-                type="submit"
-                variant="contained"
-                sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
-            >
-              My Profile 
-            </Button>
-          </Link>
-      </Grid>
-      <Grid item xs>
-          <Link component={RouterLink} to="/product" variant="body2">
-            <Button
-                type="submit"
-                variant="contained"
-                sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
-            >
-              List Product
-            </Button>
-          </Link>
-      </Grid>
-      <Grid container spacing={2}  sx={{ mt:3 }}>
-        <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>&nbsp;</StyledTableCell>
-              <StyledTableCell>Product</StyledTableCell>
-              <StyledTableCell align="center">Price</StyledTableCell>
-              <StyledTableCell align="center">Quantity</StyledTableCell>
-              <StyledTableCell align="center">Total</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                  <TableCell align="left" width="60px" margi="10">
-                  <CardMedia
-                  component="img"
-                  height="60"
-        
-                  image={row.image}
-                  alt={row.id}
-                />
-
-                  </TableCell>
-                  <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="center">{currencyFormat(row.price)}</TableCell>
-                  <TableCell align="center">{row.qty}</TableCell>
-                  <TableCell align="center">{currencyFormat(row.qty * row.price)}</TableCell>
+        <Grid item xs>
+            <Link component={RouterLink} to={"/user/edit/"} variant="body2">
+              <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
+              >
+                My Profile 
+              </Button>
+            </Link>
+        </Grid>
+        <Grid item xs>
+            <Link component={RouterLink} to="/product" variant="body2">
+              <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, mr:5, ml:5 }}
+              >
+                List Product
+              </Button>
+            </Link>
+        </Grid>
+        <Grid container spacing={2}  sx={{ mt:3 }}>
+          <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>&nbsp;</StyledTableCell>
+                <StyledTableCell>Product</StyledTableCell>
+                <StyledTableCell align="center">Price</StyledTableCell>
+                <StyledTableCell align="center">Quantity</StyledTableCell>
+                <StyledTableCell align="center">Total</StyledTableCell>
               </TableRow>
-            ))}  
-          </TableBody>
-        </Table>
-        </TableContainer>
-      </Grid>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                    <TableCell align="left" width="60px" margi="10">
+                    <CardMedia
+                    component="img"
+                    height="60"
+          
+                    image={row.image}
+                    alt={row.id}
+                  />
 
-      <Button type="button" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} component={RouterLink} to={"/cart/save"}  >
-        Checkout    
-      </Button>     
-    </Grid>        
+                    </TableCell>
+                    <TableCell align="left">{row.name}</TableCell>
+                    <TableCell align="center">{currencyFormat(row.price)}</TableCell>
+                    <TableCell align="center">{row.qty}</TableCell>
+                    <TableCell align="center">{currencyFormat(row.qty * row.price)}</TableCell>
+                </TableRow>
+              ))}  
+            </TableBody>
+          </Table>
+          </TableContainer>
+        </Grid>
+
+        <Button type="button" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} component={RouterLink} to={"/cart/save"}  >
+          Checkout    
+        </Button>     
+      </Grid>        
     </Container>
   
   );
